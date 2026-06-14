@@ -1,0 +1,23 @@
+#include <ncurses.h>
+
+#define PINK 1
+
+int main()
+{
+	initscr();
+	
+	start_color();
+	if (!can_change_color())
+		addstr("This proably won't work..\n");
+
+	init_color(PINK, 1000, 750 ,750);
+	init_pair(1, PINK, COLOR_BLACK);
+	attrset(COLOR_PAIR(1));
+	printw("This is the new colr %d\n", PINK);
+	
+	refresh();
+	getch();
+
+	endwin();
+	return 0;
+}
